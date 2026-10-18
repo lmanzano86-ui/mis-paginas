@@ -60,7 +60,7 @@ const DEMOS_SUPABASE_KEY = "sb_publishable_b6X_FUcoooXAvUWI6UXT-g_Zu4ZHi0g";
   const nav = document.querySelector('.topnav');
   const main = document.querySelector('main');
   try {
-    const r = await fetch(DEMOS_SUPABASE_URL + "/rest/v1/demo_secciones?select=*,demo_paginas(*)&demo_paginas.estado=eq.terminado&order=orden.asc&demo_paginas.order=orden.asc",
+    const r = await fetch(DEMOS_SUPABASE_URL + "/rest/v1/demo_secciones?select=*,demo_paginas(*)&demo_paginas.estado=eq.terminado&demo_paginas.visible=eq.true&order=orden.asc&demo_paginas.order=orden.asc",
       { headers: { apikey: DEMOS_SUPABASE_KEY, Authorization: "Bearer " + DEMOS_SUPABASE_KEY } });
     if (!r.ok) throw new Error("HTTP " + r.status);
     const secs = (await r.json()).filter(s => (s.demo_paginas || []).length);
